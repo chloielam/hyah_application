@@ -55,6 +55,14 @@ class PlacemarkJSONStore(private val context: Context) : PlacemarkStore {
         serialize()
     }
 
+    override fun getDescription(id: Long): String {
+        val placemarksList = findAll() as ArrayList<PlacemarkModel>
+        var foundPlacemark: PlacemarkModel? = placemarksList.find { p -> p.id == id }
+        if (foundPlacemark != null) {
+            return foundPlacemark.description
+        }
+        return ""
+    }
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(placemarks, listType)
         write(context, JSON_FILE, jsonString)

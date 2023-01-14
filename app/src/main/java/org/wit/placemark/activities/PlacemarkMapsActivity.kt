@@ -98,7 +98,7 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
     }
     override fun onMarkerClick(marker: Marker): Boolean {
         contentBinding.currentTitle.text = marker.title
-
+        contentBinding.currentDescription.text = app.placemarks.getDescription(marker.tag as Long)
         return false
     }
 

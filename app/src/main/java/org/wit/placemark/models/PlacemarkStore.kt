@@ -5,4 +5,5 @@ interface PlacemarkStore {
     fun create(placemark: PlacemarkModel)
     fun update(placemark: PlacemarkModel)
     fun delete(placemark: PlacemarkModel)
+    fun getDescription(id: Long): String
 }
