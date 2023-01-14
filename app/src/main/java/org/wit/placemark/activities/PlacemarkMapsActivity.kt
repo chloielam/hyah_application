@@ -50,8 +50,8 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_list -> {
-                val launcherIntent = Intent(this, PlacemarkListActivity::class.java)
-                viewList.launch(launcherIntent)
+                startActivity(Intent(this, PlacemarkListActivity::class.java))
+
             }
 //            R.id.item_profile -> {
 //                val launcherIntent = Intent(this, PlacemarkMapsActivity::class.java)
@@ -101,9 +101,5 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
 
         return false
     }
-    private val viewList =
-        registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        )    { }
 
 }
