@@ -1,10 +1,12 @@
 package org.wit.placemark.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
@@ -45,19 +47,19 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
         return super.onCreateOptionsMenu(menu)
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.item_add -> {
-//                val launcherIntent = Intent(this, PlacemarkActivity::class.java)
-//                getResult.launch(launcherIntent)
-//            }
-//            R.id.item_map -> {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_list -> {
+                val launcherIntent = Intent(this, PlacemarkListActivity::class.java)
+                viewList.launch(launcherIntent)
+            }
+//            R.id.item_profile -> {
 //                val launcherIntent = Intent(this, PlacemarkMapsActivity::class.java)
 //                mapIntentLauncher.launch(launcherIntent)
 //            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -99,5 +101,9 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
 
         return false
     }
+    private val viewList =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        )    { }
 
 }
