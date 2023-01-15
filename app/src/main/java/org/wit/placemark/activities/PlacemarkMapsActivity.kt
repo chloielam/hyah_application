@@ -6,12 +6,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.squareup.picasso.Picasso
 import org.wit.placemark.R
 import org.wit.placemark.databinding.ActivityPlacemarkMapsBinding
 import org.wit.placemark.databinding.ContentPlacemarkMapsBinding
@@ -99,6 +101,9 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
     override fun onMarkerClick(marker: Marker): Boolean {
         contentBinding.currentTitle.text = marker.title
         contentBinding.currentDescription.text = app.placemarks.getDescription(marker.tag as Long)
+        val imageView = findViewById<ImageView>(R.id.imageView2)
+        val currentImage = app.placemarks.getImage(marker.tag as Long)
+        Picasso.get().load(currentImage).resize(250,250).into(imageView)
         return false
     }
 
