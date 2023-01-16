@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.wit.placemark.R
 import org.wit.placemark.adapters.PlacemarkAdapter
 import org.wit.placemark.adapters.PlacemarkListener
@@ -25,35 +26,23 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener, BottomNavi
         super.onCreate(savedInstanceState)
         binding = ActivityPlacemarkListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.toolbar.title = title
-        setSupportActionBar(binding.toolbar)
+        val mAddFab = findViewById<FloatingActionButton>(R.id.add_fab)
         val bottomNavView = findViewById<BottomNavigationView>(R.id.nav_view)
         bottomNavView.setOnNavigationItemSelectedListener(this)
-        bottomNavView.itemIconTintList = null
+        //bottomNavView.itemIconTintList = null
         app = application as MainApp
-
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = PlacemarkAdapter(app.placemarks.findAll(),this)
+        mAddFab.setOnClickListener {
+            val launcherIntent = Intent(this, PlacemarkActivity::class.java)
+            getResult.launch(launcherIntent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.item_add -> {
-                val launcherIntent = Intent(this, PlacemarkActivity::class.java)
-                getResult.launch(launcherIntent)
-            }
-//            R.id.item_map -> {
-//                val launcherIntent = Intent(this, PlacemarkMapsActivity::class.java)
-//                mapIntentLauncher.launch(launcherIntent)
-//            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
      private val getResult =

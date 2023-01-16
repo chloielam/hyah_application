@@ -32,12 +32,12 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
         app = application as MainApp
         binding = ActivityPlacemarkMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        //setSupportActionBar(binding.toolbar)
         contentBinding = ContentPlacemarkMapsBinding.bind(binding.root)
         contentBinding.mapView.onCreate(savedInstanceState)
         var selectedItemColor: Int = R.color.colorAccent
         val bottomNavView = findViewById<BottomNavigationView>(R.id.nav_view)
-        bottomNavView.itemIconTintList = null
+        //bottomNavView.itemIconTintList = null
         bottomNavView.setOnNavigationItemSelectedListener(this)
         contentBinding.mapView.getMapAsync {
             map = it
