@@ -33,6 +33,7 @@ class PlacemarkActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
         edit = false
         app = application as MainApp
 
