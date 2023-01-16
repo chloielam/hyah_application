@@ -19,5 +19,9 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="menu_main">HYAH</string>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Map</string>
+    <string name="title_placemarks">Placemarks</string>
+    <string name="title_profile">Profile</string>
 
 </resources>

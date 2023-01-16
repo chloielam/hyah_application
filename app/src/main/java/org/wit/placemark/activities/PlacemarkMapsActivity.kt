@@ -1,25 +1,26 @@
 package org.wit.placemark.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.squareup.picasso.Picasso
 import org.wit.placemark.R
 import org.wit.placemark.databinding.ActivityPlacemarkMapsBinding
 import org.wit.placemark.databinding.ContentPlacemarkMapsBinding
 import org.wit.placemark.main.MainApp
+import android.graphics.PorterDuff
 
-class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+
+class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityPlacemarkMapsBinding
     private lateinit var contentBinding: ContentPlacemarkMapsBinding
@@ -28,15 +29,16 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         app = application as MainApp
         binding = ActivityPlacemarkMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-
         contentBinding = ContentPlacemarkMapsBinding.bind(binding.root)
         contentBinding.mapView.onCreate(savedInstanceState)
-
+        var selectedItemColor: Int = R.color.colorAccent
+        val bottomNavView = findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavView.itemIconTintList = null
+        bottomNavView.setOnNavigationItemSelectedListener(this)
         contentBinding.mapView.getMapAsync {
             map = it
             configureMap()
@@ -49,19 +51,15 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.item_list -> {
-                startActivity(Intent(this, PlacemarkListActivity::class.java))
-
-            }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
 //            R.id.item_profile -> {
 //                val launcherIntent = Intent(this, PlacemarkMapsActivity::class.java)
 //                mapIntentLauncher.launch(launcherIntent)
 //            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -106,5 +104,20 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
         Picasso.get().load(currentImage).resize(250,250).into(imageView)
         return false
     }
-
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // your implementation here
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                startActivity(Intent(this, PlacemarkMapsActivity::class.java))
+                return true
+            }
+            R.id.navigation_placemarks -> {
+                startActivity(Intent(this, PlacemarkListActivity::class.java))
+                return true
+            }
+        }
+        return false
+    }
 }
+
+

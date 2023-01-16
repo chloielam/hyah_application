@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.wit.placemark.R
 import org.wit.placemark.adapters.PlacemarkAdapter
 import org.wit.placemark.adapters.PlacemarkListener
@@ -15,7 +16,7 @@ import org.wit.placemark.databinding.ActivityPlacemarkListBinding
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.PlacemarkModel
 
-class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
+class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityPlacemarkListBinding
@@ -26,7 +27,9 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
         setContentView(binding.root)
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
-
+        val bottomNavView = findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavView.setOnNavigationItemSelectedListener(this)
+        bottomNavView.itemIconTintList = null
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
@@ -45,10 +48,10 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
                 val launcherIntent = Intent(this, PlacemarkActivity::class.java)
                 getResult.launch(launcherIntent)
             }
-            R.id.item_map -> {
-                val launcherIntent = Intent(this, PlacemarkMapsActivity::class.java)
-                mapIntentLauncher.launch(launcherIntent)
-            }
+//            R.id.item_map -> {
+//                val launcherIntent = Intent(this, PlacemarkMapsActivity::class.java)
+//                mapIntentLauncher.launch(launcherIntent)
+//            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -85,4 +88,19 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         )    { }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // your implementation here
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                startActivity(Intent(this, PlacemarkMapsActivity::class.java))
+                return true
+            }
+            R.id.navigation_placemarks -> {
+                startActivity(Intent(this, PlacemarkListActivity::class.java))
+                return true
+            }
+        }
+        return false
+    }
 }
