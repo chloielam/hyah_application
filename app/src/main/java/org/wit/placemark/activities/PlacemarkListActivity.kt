@@ -89,6 +89,10 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener, BottomNavi
                 startActivity(Intent(this, PlacemarkListActivity::class.java))
                 return true
             }
+            R.id.navigation_profile -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
+                return true
+            }
         }
         return false
     }

@@ -23,5 +23,9 @@
     <string name="title_home">Map</string>
     <string name="title_placemarks">Placemarks</string>
     <string name="title_profile">Profile</string>
-
+    <string name="hint_username">Username</string>
+    <string name="hint_name">Name</string>
+    <string name="button_avatar">Change Avatar</string>
+    <string name="hint_birthday">Birthday</string>
+    <string name="hint_pronouns">Pronouns</string>
 </resources>

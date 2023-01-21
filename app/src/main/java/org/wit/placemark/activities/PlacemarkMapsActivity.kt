@@ -32,12 +32,9 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
         app = application as MainApp
         binding = ActivityPlacemarkMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setSupportActionBar(binding.toolbar)
         contentBinding = ContentPlacemarkMapsBinding.bind(binding.root)
         contentBinding.mapView.onCreate(savedInstanceState)
-        var selectedItemColor: Int = R.color.colorAccent
         val bottomNavView = findViewById<BottomNavigationView>(R.id.nav_view)
-        //bottomNavView.itemIconTintList = null
         bottomNavView.setOnNavigationItemSelectedListener(this)
         contentBinding.mapView.getMapAsync {
             map = it
@@ -50,16 +47,6 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
         menuInflater.inflate(R.menu.menu_map, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.item_profile -> {
-//                val launcherIntent = Intent(this, PlacemarkMapsActivity::class.java)
-//                mapIntentLauncher.launch(launcherIntent)
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -113,6 +100,10 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
             }
             R.id.navigation_placemarks -> {
                 startActivity(Intent(this, PlacemarkListActivity::class.java))
+                return true
+            }
+            R.id.navigation_profile -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
                 return true
             }
         }
