@@ -16,7 +16,22 @@ To run the project:
 - In the list window, you can view and edit a list of your saved locations. You can also use the floating button to add more locations. When adding or editing you can search for a specific location or drag the marker with Google Maps.
 - In the profile window, you can view and edit your name, username, pronouns, birthday, description, and avatar. You can select a date for birthday using date picker.
 
-![screenshot of the application](map_activity.png)
+<table>
+  <tr>
+    <td>
+      <img src="map_activity.png" width="200" height="440"/>
+      <p align="center">Map Activity</p>
+    </td>
+    <td>
+      <img src="list_activity.png" width="200" height="440"/>
+      <p align="center">List Activity</p>
+    </td>
+    <td>
+      <img src="profile_activity.png" width="200" height="440"/>
+      <p align="center">Profile Activity</p>
+    </td>
+  </tr>
+</table>
 
 ## Future Work
 
