@@ -19,15 +19,15 @@ To run the project:
 <table>
   <tr>
     <td>
-      <img src="map_activity.png" width="200" height="440"/>
+      <img src="map_activity.png" width="230" height="440"/>
       <p align="center">Map Activity</p>
     </td>
     <td>
-      <img src="list_activity.png" width="200" height="440"/>
+      <img src="list_activity.png" width="230" height="440"/>
       <p align="center">List Activity</p>
     </td>
     <td>
-      <img src="profile_activity.png" width="200" height="440"/>
+      <img src="profile_activity.png" width="230" height="440"/>
       <p align="center">Profile Activity</p>
     </td>
   </tr>
