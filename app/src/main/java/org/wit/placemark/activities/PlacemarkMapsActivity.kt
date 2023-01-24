@@ -43,11 +43,6 @@ class PlacemarkMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListen
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_map, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         contentBinding.mapView.onDestroy()

@@ -1,5 +1,6 @@
 package org.wit.placemark.activities
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.ProfileModel
 import org.wit.placemark.showImagePicker
 import timber.log.Timber
+import java.util.*
 
 class ProfileEditActivity : AppCompatActivity() {
     lateinit var app: MainApp
@@ -28,7 +30,10 @@ class ProfileEditActivity : AppCompatActivity() {
         setContentView(binding.root)
         // setContentView(R.layout.activity_profile_edit)
         app = application as MainApp
-
+        val c = Calendar.getInstance()
+        val y = c.get(Calendar.YEAR)
+        val m = c.get(Calendar.MONTH)
+        val d = c.get(Calendar.DATE)
         binding.rname.setText(app.profile.find().name)
         binding.ruser.setText(app.profile.find().username)
         binding.rpronouns.setText(app.profile.find().pronouns)
@@ -39,8 +44,13 @@ class ProfileEditActivity : AppCompatActivity() {
                 .load(app.profile.find().avatar)
                 .into(binding.avatar)
         }
-
-        binding.buttonSave.setOnClickListener() {
+        binding.buttonBirthday.setOnClickListener {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                binding.rbirthday.setText("" + dayOfMonth + "/" + (month + 1) + "/" + year)
+            }, y,m,d)
+            dpd.show()
+        }
+        binding.buttonSave.setOnClickListener {
             user.name = binding.rname.text.toString()
             user.username = binding.ruser.text.toString()
             user.pronouns = binding.rpronouns.text.toString()

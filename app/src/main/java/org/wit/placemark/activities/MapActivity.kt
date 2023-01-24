@@ -25,7 +25,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapBinding
     private var location = Location()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMapBinding.inflate(layoutInflater)
@@ -79,13 +78,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
                 }
                 return false
             }
-
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }
         })
     }
-
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         val loc = LatLng(location.lat, location.lng)
@@ -124,4 +121,5 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
         finish()
         super.onBackPressed()
     }
+
 }
