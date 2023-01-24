@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ProfileActivity">
+    tools:context=".activities.ProfileEditActivity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="428dp"
+        android:layout_height="745dp"
+        android:layout_marginEnd="2dp"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="650dp"
+            android:layout_width="413dp"
+            android:layout_height="728dp"
             android:fillViewport="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,24 +42,33 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--                <Button-->
-                <!--                    android:id="@+id/avatar"-->
-                <!--                    android:layout_width="338dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_margin="16dp"-->
-                <!--                    android:background="@android:color/transparent"-->
-                <!--                    android:paddingTop="8dp"-->
-                <!--                    android:paddingBottom="8dp"-->
-                <!--                    android:text="@string/button_avatar"-->
-                <!--                    android:textColor="@color/colorAccent"-->
-                <!--                    android:textSize="13sp" />-->
+                <Button
+                    android:id="@+id/button_avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="56dp"
+                    android:background="@android:color/transparent"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/button_avatar"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toTopOf="@+id/name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.534"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/avatar"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="70dp"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="8dp"
@@ -69,16 +81,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/avatar" />
 
-                <TextView
+                <EditText
                     android:id="@+id/rname"
                     android:layout_width="230dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="80dp"
                     android:autofillHints=""
                     android:background="@color/colorPrimary"
                     android:backgroundTint="@color/colorPrimary"
                     android:hint="@string/hint_name"
+                    android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:minHeight="48dp"
@@ -94,7 +107,7 @@
                 <TextView
                     android:id="@+id/username"
                     android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
                     android:maxLength="25"
@@ -108,16 +121,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name" />
 
-                <TextView
+                <EditText
                     android:id="@+id/ruser"
                     android:layout_width="230dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
                     android:autofillHints=""
                     android:background="@color/colorPrimary"
                     android:backgroundTint="@color/colorPrimary"
                     android:hint="@string/hint_username"
+                    android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:minHeight="48dp"
@@ -133,7 +147,7 @@
                 <TextView
                     android:id="@+id/pronouns"
                     android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
                     android:maxLength="25"
@@ -147,16 +161,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/username" />
 
-                <TextView
+                <EditText
                     android:id="@+id/rpronouns"
                     android:layout_width="230dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
                     android:autofillHints=""
                     android:background="@color/colorPrimary"
                     android:backgroundTint="@color/colorPrimary"
                     android:hint="@string/hint_pronouns"
+                    android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:minHeight="48dp"
@@ -172,7 +187,7 @@
                 <TextView
                     android:id="@+id/birthday"
                     android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
                     android:maxLength="25"
@@ -186,13 +201,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/pronouns" />
 
-                <TextView
+                <EditText
                     android:id="@+id/rbirthday"
                     android:layout_width="230dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
                     android:autofillHints=""
+                    android:inputType="text"
                     android:background="@color/colorPrimary"
                     android:backgroundTint="@color/colorPrimary"
                     android:hint="@string/hint_birthday"
@@ -211,7 +227,7 @@
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="175dp"
@@ -227,13 +243,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
-                <TextView
+                <EditText
                     android:id="@+id/rdescription"
-                    android:layout_width="231dp"
-                    android:layout_height="135dp"
+                    android:layout_width="230dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="16dp"
                     android:autofillHints=""
+                    android:inputType="text"
                     android:background="@color/colorPrimary"
                     android:backgroundTint="@color/colorPrimary"
                     android:hint="@string/hint_placemarkDescription"
@@ -248,35 +265,34 @@
                     app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
                 <Button
-                    android:id="@+id/button_edit"
+                    android:id="@+id/button_cancel"
                     android:layout_width="81dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="284dp"
+                    android:layout_marginStart="200dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="10dp"
                     android:background="@android:color/transparent"
                     android:padding="8dp"
-                    android:text="@string/button_edit"
+                    android:text="@string/button_cancel"
                     android:textColor="@color/colorAccent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rdescription" />
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorAccent"
+                    android:padding="8dp"
+                    android:text="@string/button_save"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintStart_toEndOf="@+id/button_cancel"
+                    app:layout_constraintTop_toBottomOf="@+id/rdescription"
+                    tools:ignore="TextContrastCheck"
+                    style="?android:attr/borderlessButtonStyle"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </RelativeLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@drawable/bottom_navigation_selector"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        tools:layout_conversion_absoluteHeight="56dp"
-        tools:layout_conversion_absoluteWidth="411dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

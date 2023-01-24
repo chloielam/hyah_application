@@ -17,8 +17,3 @@ data class Location(var lat: Double = 0.0,
                     var lng: Double = 0.0,
                     var zoom: Float = 0f) : Parcelable
 
-data class Profile(var name: String = "",
-                   var username: String = "",
-                   var pronouns: String = "",
-                   var birthday: String = "",
-                   var description: String = "")

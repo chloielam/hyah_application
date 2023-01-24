@@ -8,6 +8,7 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_cancelPlacemark">Cancel</string>
     <string name="enter_placemark_title"> Please enter a Placemark Title </string>
+    <string name="enter_username"> Your Username cannot be empty! </string>
     <string name="save_placemark"> Save Placemark </string>
     <string name="button_addImage"> Add Image </string>
     <string name="select_placemark_image">Select placemark image</string>
@@ -28,4 +29,7 @@
     <string name="button_avatar">Change Avatar</string>
     <string name="hint_birthday">Birthday</string>
     <string name="hint_pronouns">Pronouns</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
 </resources>
